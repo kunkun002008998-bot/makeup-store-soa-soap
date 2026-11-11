@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - MakeupStore</title>
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">💄</span>
+            
+            <span class="logo-text">MakeupStore Admin</span>
+        </div>
+        <div class="header-actions">
+            <a href="management.html" class="btn-back">📊 Tổng quan</a>
+            <a href="inventory.html" class="btn-back">📦 Batch & Expiry</a>
+            <a href="index.html" class="btn-back">← Back to Store</a>
+            <button id="logoutBtn" class="btn-back" type="button">Đăng xuất</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Product Management</h1>
+            <p>Add, edit, or delete products from your inventory.</p>
+        </div>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Left Section - Add/Edit Product Form -->
+            <div class="form-section">
+                <h2 id="formTitle">Add New Product</h2>
+                
+                <form id="productForm" class="product-form">
+                    <input type="hidden" id="productId">
+                    
+                    <div class="form-group">
+                        <label for="productName">Product Name *</label>
+                        <input type="text" id="productName" required placeholder="e.g., Luxury Foundation">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productCode">Product Code *</label>
+                        <input type="text" id="productCode" required placeholder="e.g., FN-004">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Price (PKR) *</label>
+                            <input type="number" id="productPrice" required min="0" step="0.01" placeholder="0.00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productStock">Stock Quantity *</label>
+                            <input type="number" id="productStock" required min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row"><div class="form-group"><label for="productCategory">Category</label><select id="productCategory"><option value="">-- Chọn danh mục --</option></select></div><div class="form-group"><label for="productBrand">Brand</label><select id="productBrand"><option value="">-- Chọn thương hiệu --</option></select></div></div>
+                    <div class="form-group">
+                        <label for="productImage">Product Image *</label>
+                        <input type="file" id="productImage" accept="image/*">
+                        <small>Upload a product image (JPG, PNG, GIF)</small>
+                        <div class="image-preview" id="imagePreview">
+                            <img id="previewImg" src="" alt="Preview" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-submit" id="submitBtn">Add Product</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Section - Product List -->
+            <div class="list-section">
+                <div class="list-header">
+                    <h2>Current Products</h2>
+                    <span class="product-count" id="productCount">0 products</span>
+                </div>
+
+                <div class="product-list" id="productList">
+                    <!-- Products will be loaded here -->
+                    <p class="empty-message">Loading products...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3>Delete Product?</h3>
+            <p>Are you sure you want to delete <strong id="deleteProductName"></strong>?</p>
+            <p class="warning">This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancelDelete">Cancel</button>
+                <button class="btn-delete" id="confirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="admin-script.js"></script>
+<script>
+document.getElementById('logoutBtn').addEventListener('click', async()=>{await fetch('/api/auth/logout',{method:'POST',credentials:'include'});location.href='login.html';});
+</script>
+</body>
+</html>

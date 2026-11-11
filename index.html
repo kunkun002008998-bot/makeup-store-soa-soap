@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeupStore - Billing & Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">💄</span>
+            <span class="logo-text">MakeupStore</span>
+        </div>
+        <div class="header-icons">
+            <a href="ai-assistant.html" title="AI tư vấn" style="text-decoration:none">✨ AI</a><a href="management.html" title="Quản lý" style="text-decoration:none">📊</a><a href="admin.html" class="admin-link" title="Admin Panel">⚙️</a>
+            <span class="icon">👤</span>
+            <span class="icon">🛒</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Title Section -->
+        <div class="page-title">
+            <h1>Billing / Point of Sale</h1>
+            <p>Manage and process customer transactions efficiently.</p>
+        </div>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Left Section - Product List -->
+            <div class="product-section">
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search by product name or code">
+                </div>
+
+                <!-- Product Table -->
+                <table class="product-table">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Code</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productList">
+                        <!-- Products will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Section - Bill Summary -->
+            <div class="bill-section">
+                <h2>Bill Summary</h2>
+                
+                <!-- Bill Items List -->
+                <div class="bill-items" id="billItems">
+                    <!-- Bill items will appear here -->
+                    <p class="empty-message">No items added yet</p>
+                </div>
+
+                <!-- Bill Totals -->
+                <div class="bill-totals">
+                    <div class="total-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₫0</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Tax (10%)</span>
+                        <span id="tax">₫0</span>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>Total Amount</span>
+                        <span id="totalAmount">₫0</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn-reset" id="resetBtn">Reset</button>
+                    <button class="btn-print" id="printBtn">Print Bill</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+<div style="position:fixed;right:14px;top:14px;z-index:99;display:flex;gap:8px"><a href="login.html" style="background:#b44f7a;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none">Đăng nhập</a><a href="admin.html" style="background:#8e4164;color:#fff;padding:9px 12px;border-radius:8px;text-decoration:none">Quản trị</a></div>
+</body>
+</html>
